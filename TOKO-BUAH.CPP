@@ -511,3 +511,11 @@ void cetakLinkedListMaju() {
     }
     cout << "+-----+--------------------------+--------+------------+\n";
 }
+void cetakMundurHelper(NodeBuah *node, int &no) {
+    if (node == nullptr) return;
+    cetakMundurHelper(node->next, no);
+    cout << "| " << left << setw(3) << no++ << " | "
+         << left << setw(24) << node->data.nama << " | "
+         << right << setw(6) << node->data.stok << " | "
+         << right << setw(10) << node->data.harga << " |\n";
+}
