@@ -519,3 +519,16 @@ void cetakMundurHelper(NodeBuah *node, int &no) {
          << right << setw(6) << node->data.stok << " | "
          << right << setw(10) << node->data.harga << " |\n";
 }
+void cetakLinkedListMundur() {
+    if (head == nullptr) {
+        cout << "\nLinked list kosong.\n";
+        return;
+    }
+    cout << "\n========== CETAK LINKED LIST (MUNDUR) ==========\n";
+    cout << "+-----+--------------------------+--------+------------+\n";
+    cout << "| No  | Nama Buah                | Stok   | Harga/kg   |\n";
+    cout << "+-----+--------------------------+--------+------------+\n";
+    int no = 1;
+    cetakMundurHelper(head, no);
+    cout << "+-----+--------------------------+--------+------------+\n";
+}
