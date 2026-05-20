@@ -646,3 +646,60 @@ void menuPembeli(Buah *ptr) {
     cout << "      PEMBELIAN BERHASIL!\n";
     cout << "==================================\n";
 }
+// ==================== MAIN PROGRAM ====================
+int main() {
+    Buah dataBuah[MAX];
+    jumlah = bacaFile(dataBuah);
+
+    int role;
+    
+    cout << "\n+==================================+\n";
+    cout << "|       PILIH JENIS PENGGUNA       |\n";
+    cout << "+==================================+\n";
+    cout << "| 1. Admin / Penjual              |\n";
+    cout << "| 2. Pembeli                      |\n";
+    cout << "+==================================+\n";
+    cout << "Pilihan Anda : ";
+    cin >> role;
+    
+    if (role == 1) {
+		int pilihan;
+		do {
+			cout << "\n+==================================+\n";
+			cout << "|   SISTEM MANAJEMEN DATA BUAH     |\n";
+			cout << "+==================================+\n";
+			cout << "| 1. Tambah Data Buah              |\n"; 
+			cout << "| 2. Tampilkan Data Buah (Sorting) |\n";
+			cout << "| 3. Cari Buah Berdasarkan Nama    |\n";
+			cout << "| 4. Update Stok Buah              |\n";
+			cout << "| 5. Operasi Linked List 		    |\n";
+			cout << "| 6. Keluar                        |\n";
+			cout << "+==================================+\n";
+			cout << "Pilihan Anda : ";
+			cin >> pilihan;
+
+			switch (pilihan) {
+				case 1: tambahBuah(dataBuah); break;
+				case 2: jumlah = bacaFile(dataBuah); tampilkan(dataBuah); break;
+				case 3: jumlah = bacaFile(dataBuah); cariBuah(dataBuah); break;
+				case 4: jumlah = bacaFile(dataBuah); updateStok(dataBuah); break;
+				case 5: menuLinkedList(); break;
+				case 6: cout << "\nProgram selesai. Terima kasih!\n"; break;
+				default: cout << "\nPilihan kamu ngawur! Silakan coba lagi.\n";
+			}
+		} while (pilihan != 6);
+	}
+	
+	else if (role == 2) { 
+		jumlah = bacaFile(dataBuah);
+		menuPembeli(dataBuah);
+	}
+	
+	else {
+		cout << "Pilihan tidak ada!\n";
+	}
+
+    // Bersihkan memori linked list sebelum keluar
+    buatListKosong();
+    return 0;
+}
