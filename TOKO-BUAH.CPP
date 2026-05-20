@@ -289,3 +289,57 @@ void tampilkan(Buah *ptr) {
     }
     cout << "+-----+--------------------------+--------+------------+\n";
 }
+
+// Binary Search (harus terurut berdasarkan nama)
+int binarySearch(Buah *ptr, string cari) {
+    int kiri = 0, kanan = jumlah - 1;
+    while (kiri <= kanan) {
+        int mid = (kiri + kanan) / 2;
+        if ((ptr + mid)->nama == cari)
+            return mid;
+        else if ((ptr + mid)->nama < cari)
+            kiri = mid + 1;
+        else
+            kanan = mid - 1;
+    }
+    return -1;
+}
+
+// Menu 3
+void cariBuah(Buah *ptr) {
+    if (jumlah == 0) {
+        cout << "\n+----------------------------------+\n";
+        cout << "|        DATA MASIH KOSONG        |\n";
+        cout << "+----------------------------------+\n";
+        return;
+    }
+
+    cin.ignore();
+    string cari;
+    cout << "\n========== CARI BUAH ==========\n";
+    cout << "Masukkan nama buah: ";
+    getline(cin, cari);
+
+    // Sequential search 
+    int hasil = -1;
+    for (int i = 0; i < jumlah; i++) {
+        if ((ptr + i)->nama == cari) {
+            hasil = i;
+            break;
+        }
+    }
+
+    if (hasil != -1) {
+        cout << "\n+----------------------------------+\n";
+        cout << "|         BUAH DITEMUKAN!          |\n";
+        cout << "+----------------------------------+\n";
+        cout << "| Nama  : " << left << setw(25) << (ptr + hasil)->nama <<"|\n";
+        cout << "| Stok  : " << setw(25) << to_string((ptr + hasil)->stok) <<"|\n";
+        cout << "| Harga : " << setw(25) << to_string((ptr + hasil)->harga) <<"|\n";
+        cout << "+----------------------------------+\n";
+    } else {
+        cout << "\n+----------------------------------+\n";
+        cout << "|       DATA TIDAK DITEMUKAN       |\n";
+        cout << "+----------------------------------+\n";
+    }
+}
