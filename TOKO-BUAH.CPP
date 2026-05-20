@@ -491,3 +491,23 @@ void hapusNodeBerdasarkanNama() {
         cout << "Node \"" << namaCari << "\" dihapus.\n";
     }
 }
+void cetakLinkedListMaju() {
+    if (head == nullptr) {
+        cout << "\nLinked list kosong.\n";
+        return;
+    }
+    cout << "\n========== CETAK LINKED LIST (MAJU) ==========\n";
+    cout << "+-----+--------------------------+--------+------------+\n";
+    cout << "| No  | Nama Buah                | Stok   | Harga/kg   |\n";
+    cout << "+-----+--------------------------+--------+------------+\n";
+    NodeBuah *current = head;
+    int no = 1;
+    while (current != nullptr) {
+        cout << "| " << left << setw(3) << no++ << " | "
+             << left << setw(24) << current->data.nama << " | "
+             << right << setw(6) << current->data.stok << " | "
+             << right << setw(10) << current->data.harga << " |\n";
+        current = current->next;
+    }
+    cout << "+-----+--------------------------+--------+------------+\n";
+}
