@@ -231,3 +231,61 @@ void mergeSort(Buah *ptr, int left, int right, bool ascending) {
         merge(ptr, left, mid, right, ascending);
     }
 }
+
+// ==================== TAMPILAN ====================
+void tampilkan(Buah *ptr) {
+    if (jumlah == 0) {
+        cout << "\n+----------------------------------+\n";
+        cout << "|        DATA MASIH KOSONG        |\n";
+        cout << "+----------------------------------+\n";
+        return;
+    }
+
+    int pilihUrutan;
+    cout << "\n+----------------------------------+\n";
+    cout << "|   URUTAN BERDASARKAN HARGA      |\n";
+    cout << "+----------------------------------+\n";
+    cout << "| 1. Termurah -> Termahal (Asce)  |\n";
+    cout << "| 2. Termahal -> Termurah (Desc)  |\n";
+    cout << "+----------------------------------+\n";
+    cout << "Pilihan urutan: ";
+    cin >> pilihUrutan;
+
+    bool ascending = (pilihUrutan == 1);
+
+    int pilihMetode;
+    cout << "\n+----------------------------------+\n";
+    cout << "|        PILIH METODE SORTING      |\n";
+    cout << "+----------------------------------+\n";
+    cout << "| 1. Bubble Sort                   |\n";
+    cout << "| 2. Selection Sort                |\n";
+    cout << "| 3. Insertion Sort                |\n";
+    cout << "| 4. Shell Sort                    |\n";
+    cout << "| 5. Quick Sort                    |\n";
+    cout << "| 6. Merge Sort                    |\n";
+    cout << "+----------------------------------+\n";
+    cout << "Pilihan metode: ";
+    cin >> pilihMetode;
+
+    switch(pilihMetode) {
+        case 1: bubbleSort(ptr, jumlah, ascending); break;
+        case 2: selectionSort(ptr, jumlah, ascending); break;
+        case 3: insertionSort(ptr, jumlah, ascending); break;
+        case 4: shellSort(ptr, jumlah, ascending); break;
+        case 5: quickSort(ptr, 0, jumlah-1, ascending); break;
+        case 6: mergeSort(ptr, 0, jumlah-1, ascending); break;
+        default: cout << "Metode tidak valid, gunakan Bubble Sort.\n"; bubbleSort(ptr, jumlah, ascending);
+    }
+
+    cout << "\n+-----+--------------------------+--------+------------+\n";
+    cout << "| No  | Nama Buah                | Stok   | Harga/kg   |\n";
+    cout << "+-----+--------------------------+--------+------------+\n";
+
+    for (int i = 0; i < jumlah; i++) {
+        cout << "| " << left << setw(3) << i + 1 << " | "
+             << left << setw(24) << (ptr + i)->nama << " | "
+             << right << setw(6) << (ptr + i)->stok << " | "
+             << right << setw(10) << (ptr + i)->harga << " |\n";
+    }
+    cout << "+-----+--------------------------+--------+------------+\n";
+}
