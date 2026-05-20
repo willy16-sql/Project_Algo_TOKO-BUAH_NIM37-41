@@ -425,3 +425,37 @@ void sisipNodeDiDepan() {
     head = newNode;
     cout << "Node berhasil ditambahkan di depan.\n";
 }
+void sisipNodeTerurutBerdasarkanNama() {
+    cin.ignore();
+    Buah buahBaru;
+    cout << "\n========== SISIP NODE TERURUT (NAMA) ==========\n";
+    cout << "Nama buah: ";
+    getline(cin, buahBaru.nama);
+    buahBaru.stok = inputStok("Stok (0-100): ");
+    buahBaru.harga = inputAngka("Harga per kg: ");
+
+    NodeBuah *newNode = new NodeBuah;
+    newNode->data = buahBaru;
+
+    if (head == nullptr) {
+        newNode->next = nullptr;
+        head = newNode;
+        cout << "Node ditambahkan sebagai satu-satunya node.\n";
+        return;
+    }
+
+    if (buahBaru.nama < head->data.nama) {
+        newNode->next = head;
+        head = newNode;
+        cout << "Node ditambahkan di depan (terurut).\n";
+        return;
+    }
+
+    NodeBuah *current = head;
+    while (current->next != nullptr && current->next->data.nama < buahBaru.nama) {
+        current = current->next;
+    }
+    newNode->next = current->next;
+    current->next = newNode;
+    cout << "Node ditambahkan secara terurut.\n";
+}
