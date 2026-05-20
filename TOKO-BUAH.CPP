@@ -459,3 +459,35 @@ void sisipNodeTerurutBerdasarkanNama() {
     current->next = newNode;
     cout << "Node ditambahkan secara terurut.\n";
 }
+void hapusNodeBerdasarkanNama() {
+    if (head == nullptr) {
+        cout << "\nLinked list masih kosong.\n";
+        return;
+    }
+    cin.ignore();
+    string namaCari;
+    cout << "\n========== HAPUS NODE ==========\n";
+    cout << "Masukkan nama buah: ";
+    getline(cin, namaCari);
+
+    if (head->data.nama == namaCari) {
+        NodeBuah *temp = head;
+        head = head->next;
+        delete temp;
+        cout << "Node \"" << namaCari << "\" dihapus.\n";
+        return;
+    }
+
+    NodeBuah *current = head;
+    while (current->next != nullptr && current->next->data.nama != namaCari) {
+        current = current->next;
+    }
+    if (current->next == nullptr) {
+        cout << "Buah \"" << namaCari << "\" tidak ditemukan.\n";
+    } else {
+        NodeBuah *hapus = current->next;
+        current->next = hapus->next;
+        delete hapus;
+        cout << "Node \"" << namaCari << "\" dihapus.\n";
+    }
+}
