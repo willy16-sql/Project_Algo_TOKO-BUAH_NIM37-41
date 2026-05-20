@@ -532,3 +532,33 @@ void cetakLinkedListMundur() {
     cetakMundurHelper(head, no);
     cout << "+-----+--------------------------+--------+------------+\n";
 }
+void cariNodeLinkedList() {
+    if (head == nullptr) {
+        cout << "\nLinked list kosong.\n";
+        return;
+    }
+    cin.ignore();
+    string cari;
+    cout << "\n========== CARI NODE ==========\n";
+    cout << "Masukkan nama buah: ";
+    getline(cin, cari);
+
+    NodeBuah *current = head;
+    int posisi = 1;
+    while (current != nullptr) {
+        if (current->data.nama == cari) {
+            cout << "\n+----------------------------------+\n";
+            cout << "|         BUAH DITEMUKAN!          |\n";
+            cout << "+----------------------------------+\n";
+            cout << "| Posisi : " << left << setw(20) << posisi << " |\n";
+            cout << "| Nama   : " << left << setw(20) << current->data.nama << " |\n";
+            cout << "| Stok   : " << left << setw(20) << current->data.stok << " |\n";
+            cout << "| Harga  : " << left << setw(20) << current->data.harga << " |\n";
+            cout << "+----------------------------------+\n";
+            return;
+        }
+        current = current->next;
+        posisi++;
+    }
+    cout << "\nBuah \"" << cari << "\" tidak ditemukan.\n";
+}
