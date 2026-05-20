@@ -51,3 +51,27 @@ int bacaFile(Buah *b){
 
 const int MAX = 100;
 int jumlah = 0;
+
+int inputAngka(string pesan) {
+    int x;
+    cout << pesan;
+    cin >> x;
+    while (cin.fail() || x < 0) {
+        cin.clear();
+        cin.ignore(1000, '\n');
+        cout << "Input tidak valid! Masukkan angka >= 0: ";
+        cin >> x;
+    }
+    return x;
+}
+
+int inputStok(string pesan) {
+    int stok;
+    do {
+        stok = inputAngka(pesan);
+        if (stok > 100) {
+            cout << "Stok maksimal 100! Silakan masukkan ulang.\n";
+        }
+    } while (stok > 100);
+    return stok;
+}
