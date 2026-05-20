@@ -17,3 +17,4 @@ void hapusNewline(char *str) {
         }
     }
 }
+jajajjja
