@@ -410,3 +410,18 @@ void sisipNodeDiAkhir() {
     }
     cout << "Node berhasil ditambahkan di akhir.\n";
 }
+void sisipNodeDiDepan() {
+    cin.ignore();
+    Buah buahBaru;
+    cout << "\n========== SISIP NODE DI DEPAN ==========\n";
+    cout << "Nama buah: ";
+    getline(cin, buahBaru.nama);
+    buahBaru.stok = inputStok("Stok (0-100): ");
+    buahBaru.harga = inputAngka("Harga per kg: ");
+
+    NodeBuah *newNode = new NodeBuah;
+    newNode->data = buahBaru;
+    newNode->next = head;
+    head = newNode;
+    cout << "Node berhasil ditambahkan di depan.\n";
+}
