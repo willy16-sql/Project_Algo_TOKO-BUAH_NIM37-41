@@ -343,3 +343,28 @@ void cariBuah(Buah *ptr) {
         cout << "+----------------------------------+\n";
     }
 }
+
+// UPDATE STOK
+void updateStok(Buah *ptr) {
+    cin.ignore();
+    string cari;
+    bool ketemu = false;
+
+    cout << "\n========== UPDATE STOK ==========\n";
+    cout << "Nama buah: ";
+    getline(cin, cari);
+
+    for (int i = 0; i < jumlah; i++) {
+        if ((ptr + i)->nama == cari) {
+            (ptr + i)->stok = inputStok("Stok baru (0-100): ");
+            ketemu = true;
+            simpanFile(ptr, jumlah);
+            break;
+        }
+    }
+
+    if (ketemu)
+        cout << "Stok berhasil diupdate!\n";
+    else
+        cout << "Buah tidak ditemukan.\n";
+}
