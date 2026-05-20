@@ -368,3 +368,22 @@ void updateStok(Buah *ptr) {
     else
         cout << "Buah tidak ditemukan.\n";
 }
+
+// ==================== OPERASI LINKED LIST (BARU) ====================
+struct NodeBuah {
+    Buah data;
+    NodeBuah *next;
+};
+
+NodeBuah *head = nullptr;
+
+void buatListKosong() {
+    NodeBuah *current = head;
+    while (current != nullptr) {
+        NodeBuah *temp = current;
+        current = current->next;
+        delete temp;
+    }
+    head = nullptr;
+    cout << "\nLinked list telah dikosongkan.\n";
+}
