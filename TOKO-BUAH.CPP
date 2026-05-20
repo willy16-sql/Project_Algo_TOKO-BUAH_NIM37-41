@@ -75,3 +75,23 @@ int inputStok(string pesan) {
     } while (stok > 100);
     return stok;
 }
+
+// Menu 1
+void tambahBuah(Buah *ptr) {
+    cin.ignore();
+    cout << "\n========== TAMBAH BUAH ==========\n";
+    cout << "Nama buah: ";
+    getline(cin, (ptr + jumlah)->nama);
+    (ptr + jumlah)->stok = inputStok("Stok (0-100): ");
+    (ptr + jumlah)->harga = inputAngka("Harga per kg: ");
+    jumlah++;
+    simpanFile(ptr, jumlah);
+    cout << "Data berhasil ditambahkan!\n";
+}
+
+// Fungsi swap
+void swapBuah(Buah *a, Buah *b) {
+    Buah temp = *a;
+    *a = *b;
+    *b = temp;
+}
