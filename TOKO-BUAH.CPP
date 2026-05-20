@@ -562,3 +562,36 @@ void cariNodeLinkedList() {
     }
     cout << "\nBuah \"" << cari << "\" tidak ditemukan.\n";
 }
+void menuLinkedList() {
+    int pilih;
+    do {
+        cout << "\n+==================================+\n";
+        cout << "|        OPERASI LINKED LIST       |\n";
+        cout << "+==================================+\n";
+        cout << "| 1. Buat list kosong              |\n";
+        cout << "| 2. Sisip node di akhir           |\n";
+        cout << "| 3. Sisip node di depan           |\n";
+        cout << "| 4. Sisip node terurut (nama)     |\n";
+        cout << "| 5. Hapus node berdasarkan nama   |\n";
+        cout << "| 6. Cetak list (maju)             |\n";
+        cout << "| 7. Cetak list (mundur)           |\n";
+        cout << "| 8. Cari node pada list           |\n";
+        cout << "| 9. Kembali ke menu utama         |\n";
+        cout << "+==================================+\n";
+        cout << "Pilihan Anda : ";
+        cin >> pilih;
+
+        switch (pilih) {
+            case 1: buatListKosong(); break;
+            case 2: sisipNodeDiAkhir(); break;
+            case 3: sisipNodeDiDepan(); break;
+            case 4: sisipNodeTerurutBerdasarkanNama(); break;
+            case 5: hapusNodeBerdasarkanNama(); break;
+            case 6: cetakLinkedListMaju(); break;
+            case 7: cetakLinkedListMundur(); break;
+            case 8: cariNodeLinkedList(); break;
+            case 9: cout << "Kembali ke menu utama.\n"; break;
+            default: cout << "Pilihan tidak valid.\n";
+        }
+    } while (pilih != 9);
+}
