@@ -595,3 +595,54 @@ void menuLinkedList() {
         }
     } while (pilih != 9);
 }
+void menuPembeli(Buah *ptr) {
+	if (jumlah == 0) {
+		cout << "\nData buah kosong.\n";
+		return;
+	}
+	
+	// Tampilan data buah
+	cout << "\n========== DAFTAR BUAH ==========\n";
+	cout << "+-----+--------------------------+--------+------------+\n";
+    cout << "| No  | Nama Buah                | Stok   | Harga/kg   |\n";
+    cout << "+-----+--------------------------+--------+------------+\n";
+    
+    for (int i = 0; i < jumlah; i++) {
+		cout << "| " << left << setw(3) << i+1 << " | "
+		     << left << setw(24) << ptr[i].nama << " | "
+		     << right << setw(6) << ptr[i].stok << " | "
+		     << right << setw(10) << ptr[i].harga << " |\n";
+	}
+	cout << "+-----+--------------------------+--------+------------+\n";
+	
+	int pilih;
+	cout << "\nPilih nomor buah yang ingin dibeli: ";
+	cin >> pilih;
+	
+	if(pilih < 1 || pilih > jumlah) {
+		cout << "Pilihan tidak sesuai\n";
+		return;
+	}
+	
+	int beli;
+	cout << "Jumlah yang ingin dibeli: ";
+	cin >> beli;
+	
+	if (beli <= 0) {
+		cout << "Jumlah tidak sesuai!\n";
+		return;
+	}
+	
+	if (beli > ptr[pilih-1].stok) {
+		cout << "Stok tidak mencukupi!\n";
+		return;
+	}
+	
+	// Kurangin Stok
+	ptr[pilih-1].stok -= beli;
+	simpanFile(ptr,jumlah);
+	
+	cout << "\n==================================\n";
+    cout << "      PEMBELIAN BERHASIL!\n";
+    cout << "==================================\n";
+}
